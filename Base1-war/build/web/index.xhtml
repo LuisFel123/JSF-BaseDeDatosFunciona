@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Gestión de Editoriales</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:outputLabel value="Nombre de la Editorial:" />
+        <h:inputText value="#{editorialBean.nuevaEditorial.edNombre}" />
+        <h:commandButton value="Guardar" action="#{editorialBean.guardarEditorial}" />
+        <br /><br />
+        <h:dataTable value="#{editorialBean.listaEditoriales}" var="editorial">
+            <h:column>
+                <f:facet name="header">Código</f:facet>
+                #{editorial.edCodigo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nombre</f:facet>
+                #{editorial.edNombre}
+            </h:column>
+            <h:column>
+                <h:commandButton value="Eliminar" action="#{editorialBean.eliminarEditorial(editorial.edCodigo)}" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>
